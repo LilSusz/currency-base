@@ -42,5 +42,12 @@ describe('Component ResultBox', () => {
     expect(output).toHaveTextContent('$550.00 = $550.00');
   });
 
+  it('should render "Wrong value" when value is smaller than zero', () => {
+    render(<ResultBox from ='PLN' to='USD' amount={-100} />)
+    const output = screen.getByTestId('output');
+    expect(output).toHaveTextContent('Wrong value...');
+  });
+
+cleanup();
 
 });
